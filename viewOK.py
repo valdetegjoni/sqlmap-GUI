@@ -181,9 +181,14 @@ class MyApp(QtGui.QMainWindow):
 
 			while self.process.pid() > 0  :
 					self.showpopup()
-					stri = self.popup.lineEdit.text()
-					self.process.write('% s \n' % stri)
+					stri = str(self.popup.lineEdit.text())
+					if stri.isdigit()== True:
+						dig= int(stri)
+						self.process.write('%d\n'%dig )
+					else :
+						self.process.write('% s \n' % stri) 
 					self.process.closeWriteChannel()
+					
 			print "process end"
 	
 	
